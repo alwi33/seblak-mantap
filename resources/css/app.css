@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+/*
+ * PENTING: Tailwind CSS v4 tidak lagi membaca tailwind.config.js secara
+ * otomatis seperti v3. Semua token desain (warna, radius, shadow, font)
+ * sekarang didefinisikan lewat blok @theme di sini, bukan lewat file JS.
+ * Tanpa blok ini, class seperti bg-primary/text-primary/from-primary
+ * yang dipakai di seluruh halaman (navbar, hero, tombol, harga, dsb)
+ * tidak menghasilkan CSS apa pun alias tidak bewarna sama sekali.
+ */
+@theme {
+    --color-primary: #E53935;
+    --color-secondary: #FF6F00;
+    --color-accent: #FFC107;
+    --color-bg: #FFF8F0;
+    --color-text: #222222;
+
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+    --radius-xl: 18px;
+    --radius-2xl: 24px;
+
+    --shadow-modern: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 40px rgba(229, 57, 53, 0.12);
+}
+
+@layer base {
+  html, body, #app {
+      height: 100%;
+  }
+
+  body {
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+  }
+
+  .glass {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(6px);
+  }
+}
+
+@layer utilities {
+  .btn-primary {
+      @apply inline-flex items-center gap-2 px-5 py-3 rounded-2xl text-white font-semibold;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  }
+
+  .hero-grid-bg {
+      background-image:
+          linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+  }
+
+  .card-modern {
+      @apply rounded-2xl bg-white overflow-hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .shadow-glow {
+      box-shadow: 0 0 40px rgba(229, 57, 53, 0.12);
+  }
+
+  .menu-card:hover {
+      transform: translateY(-6px) scale(1.03);
+  }
+
+  .transition-smooth {
+      transition: all .3s ease;
+  }
+}
+
+@layer components {
+  /* Rating level pedas (mirip star-rating): radio disembunyikan, label
+     cabai yang tampil. Urutan HTML sengaja 5..1 + flex-row-reverse supaya
+     hover/checked menyorot dari kiri ke kanan seperti rating bintang. */
+  .pedas-rating input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+  }
+
+  .pedas-rating label {
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+      filter: grayscale(1) opacity(0.45);
+      transition: filter .1s ease, transform .1s ease;
+  }
+
+  .pedas-rating input:checked ~ label,
+  .pedas-rating label:hover,
+  .pedas-rating label:hover ~ label {
+      filter: grayscale(0) opacity(1);
+      transform: scale(1.08);
+  }
+
+  /* Chip kondimen: checkbox disembunyikan, label yang jadi tombol pill. */
+  .kondimen-chip {
+      position: relative;
+      display: inline-block;
+  }
+
+  .kondimen-chip input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      margin: 0;
+      inset: 0;
+  }
+
+  .kondimen-chip label {
+      display: inline-block;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 999px;
+      padding: .3rem .8rem;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--color-text);
+      background: #fff;
+      cursor: pointer;
+      transition: all .12s ease;
+  }
+
+  .kondimen-chip input:checked ~ label {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      border-color: transparent;
+      color: #fff;
+  }
+
+  .badge-status {
+      display: inline-block;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .75rem;
+      padding: .35rem .75rem;
+  }
+
+  .badge-menunggu_pembayaran, .badge-belum_bayar { background: #fdecea; color: #b3261e; }
+  .badge-menunggu_konfirmasi { background: #fff3e0; color: #b45309; }
+  .badge-diproses { background: #e3f2fd; color: #1565c0; }
+  .badge-lunas, .badge-selesai { background: #e8f5e9; color: #2e7d32; }
+  .badge-dibatalkan { background: #efefef; color: #616161; }
+
+  .qris-box {
+      border: 2px dashed var(--color-secondary);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      text-align: center;
+      background: var(--color-bg);
+  }
+
+  .qris-box img {
+      max-width: 260px;
+      width: 100%;
+      border-radius: .75rem;
+      background: #fff;
+      padding: .75rem;
+      border: 1px solid #eee;
+      margin: 0 auto;
+  }
+}
