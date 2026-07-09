@@ -53,10 +53,10 @@
           @endguest
         @else
           <!-- Menu Admin -->
-          <a href="{{ route('admin.dashboard') }}" class="hover:underline">📊 Dashboard</a>
-          <a href="{{ route('admin.paket.index') }}" class="hover:underline">🍜 Paket</a>
-          <a href="{{ route('admin.kondimen.index') }}" class="hover:underline">🧂 Kondimen</a>
-          <a href="{{ route('admin.pemesanan.index') }}" class="hover:underline">🧾 Pesanan</a>
+          <a href="{{ route('admin.dashboard') }}" class="hover:underline"> Dashboard</a>
+          <a href="{{ route('admin.paket.index') }}" class="hover:underline">Paket</a>
+          <a href="{{ route('admin.kondimen.index') }}" class="hover:underline">Kondimen</a>
+          <a href="{{ route('admin.pemesanan.index') }}" class="hover:underline">Pesanan</a>
           <a href="{{ route('admin.pengaturan.edit') }}" class="hover:underline">⚙️ Pengaturan</a>
           <a href="{{ route('menu.index') }}" target="_blank" class="px-3 py-1 text-sm rounded-full border border-primary/20 hover:bg-primary/5">👁️ Lihat Toko</a>
           <form method="POST" action="{{ route('admin.logout') }}" class="inline">
