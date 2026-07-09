@@ -8,7 +8,7 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Harga Tambahan (Rp)</label>
+            <label class="form-label">Harga Tambahan Rupiah</label>
             <input type="number" step="0.01" min="0" name="harga" value="{{ old('harga', $kondimen->harga) }}" class="form-control" required>
         </div>
 
