@@ -58,13 +58,13 @@
         {{-- Strip fitur --}}
         <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="flex items-center gap-3 border rounded-xl px-5 py-4 bg-white/70 transition-smooth hover:shadow-modern hover:-translate-y-0.5">
-                <span class="text-2xl">🛵</span><span class="font-semibold">Delivery</span>
+                <span class="text-2xl"></span><span class="font-semibold">Delivery</span>
             </div>
             <div class="flex items-center gap-3 border rounded-xl px-5 py-4 bg-white/70 transition-smooth hover:shadow-modern hover:-translate-y-0.5">
-                <span class="text-2xl">🥡</span><span class="font-semibold">Bawa Pulang</span>
+                <span class="text-2xl"></span><span class="font-semibold">Bawa Pulang</span>
             </div>
             <div class="flex items-center gap-3 border rounded-xl px-5 py-4 bg-white/70 transition-smooth hover:shadow-modern hover:-translate-y-0.5">
-                <span class="text-2xl">🍽️</span><span class="font-semibold">Makan di Tempat</span>
+                <span class="text-2xl"></span><span class="font-semibold">Makan di Tempat</span>
             </div>
         </div>
     </div>
