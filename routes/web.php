@@ -53,7 +53,7 @@ Route::post('/register', [CustomerRegisterController::class, 'register'])->name(
 
 Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
-/*
+/*k
 |--------------------------------------------------------------------------
 | Login Admin
 |--------------------------------------------------------------------------
@@ -74,7 +74,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('paket', PaketController::class)->except(['show']);
-    Route::resource('kondimen', KondimenController::class)->except(['show']);
+    Route::resource('kondimen', KondimenController::class)
+    ->except(['show'])
+    ->parameters(['kondimen' => 'kondimen']);
 
     Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan.index');
     Route::get('/pemesanan/{pemesanan}', [PemesananController::class, 'show'])->name('pemesanan.show');
