@@ -28,11 +28,11 @@
       <div class="space-y-3">
         <h4 class="font-semibold text-gray-900 mb-3">Menu Cepat</h4>
         <ul class="space-y-2.5">
-          <li><a href="{{ route('menu.index') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">🍜 Lihat Menu</a></li>
+          <li><a href="{{ route('menu.index') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Lihat Menu</a></li>
           <li><a href="{{ route('keranjang.index') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">🛒 Keranjang</a></li>
-          <li><a href="{{ route('status.form') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">🧾 Cek Status Pesanan</a></li>
+          <li><a href="{{ route('status.form') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Cek Status Pesanan</a></li>
           @auth
-            <li><a href="{{ route('dashboard') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">📱 Akun Saya</a></li>
+            <li><a href="{{ route('dashboard') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Akun Saya</a></li>
           @endauth
         </ul>
       </div>
@@ -44,7 +44,7 @@
           @if ($pengaturanFooter->no_wa)
             <li>
               <a href="https://wa.me/{{ preg_replace('/\D/', '', $pengaturanFooter->no_wa) }}" target="_blank" rel="noopener" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all flex items-center gap-2">
-                📱 {{ $pengaturanFooter->no_wa }}
+                 {{ $pengaturanFooter->no_wa }}
               </a>
             </li>
           @else
@@ -53,7 +53,7 @@
           @if ($mapsUrl)
             <li>
               <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all flex items-start gap-2">
-                <span>📍</span><span>{{ $pengaturanFooter->alamat_toko }}</span>
+                <span></span><span>{{ $pengaturanFooter->alamat_toko }}</span>
               </a>
             </li>
           @else
@@ -66,11 +66,11 @@
       <div class="space-y-3">
         <h4 class="font-semibold text-gray-900 mb-3">Info Penting</h4>
         <ul class="space-y-2.5">
-          <li><a href="#about" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">ℹ️ Tentang Kami</a></li>
-          <li><a href="#menu-list" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">🎯 Promo Spesial</a></li>
+          <li><a href="#about" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Tentang Kami</a></li>
+          <li><a href="#menu-list" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Promo Spesial</a></li>
           @guest
-            <li><a href="{{ route('customer.login') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">🔓 Login</a></li>
-            <li><a href="{{ route('customer.register') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">📝 Daftar Akun</a></li>
+            <li><a href="{{ route('customer.login') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Login</a></li>
+            <li><a href="{{ route('customer.register') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Daftar Akun</a></li>
           @endguest
         </ul>
       </div>

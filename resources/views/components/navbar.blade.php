@@ -52,7 +52,7 @@
             <a href="{{ route('customer.register') }}" class="ml-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold shadow-modern hover:shadow-glow hover:-translate-y-0.5 transition-smooth">Daftar</a>
           @else
             <div class="flex items-center gap-2 ml-2">
-              <a href="{{ route('dashboard') }}" class="px-3 py-2 text-sm font-medium rounded-full border border-primary/20 hover:bg-primary/5 transition-colors">📱 Akun</a>
+              <a href="{{ route('dashboard') }}" class="px-3 py-2 text-sm font-medium rounded-full border border-primary/20 hover:bg-primary/5 transition-colors"> Akun</a>
               <form method="POST" action="{{ route('customer.logout') }}" class="inline">
                 @csrf
                 <button class="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold hover:bg-primary/20 transition-colors">Logout</button>
@@ -88,11 +88,11 @@
       <div class="flex flex-col gap-1 pt-3 mt-1 border-t border-gray-100">
         @if (!$isAdmin)
           <!-- Mobile Menu Pelanggan -->
-          <a href="#hero" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors">🏠 Home</a>
-          <a href="#menu-list" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors">🍜 Menu</a>
-          <a href="#promo" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors">🎯 Promo</a>
-          <a href="#about" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors">ℹ️ Tentang</a>
-          <a href="#kontak" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors">📞 Kontak</a>
+          <a href="#hero" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Home</a>
+          <a href="#menu-list" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Menu</a>
+          <a href="#promo" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors"Promo</a>
+          <a href="#about" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Tentang</a>
+          <a href="#kontak" class="px-3 py-2.5 rounded-xl font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Kontak</a>
           <a href="{{ route('keranjang.index') }}" class="relative px-3 py-2.5 rounded-xl hover:bg-primary/5 hover:text-primary transition-colors flex items-center gap-2 font-medium">
             <span>🛒 Keranjang</span>
             @if ($jumlahItem > 0)
@@ -107,7 +107,7 @@
               <a href="{{ route('customer.register') }}" class="text-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-modern">Daftar</a>
             </div>
           @else
-            <a href="{{ route('dashboard') }}" class="mt-3 text-center px-4 py-2.5 rounded-xl border-2 border-primary text-primary font-semibold">📱 Akun Saya</a>
+            <a href="{{ route('dashboard') }}" class="mt-3 text-center px-4 py-2.5 rounded-xl border-2 border-primary text-primary font-semibold"> Akun Saya</a>
             <form method="POST" action="{{ route('customer.logout') }}" class="mt-2">@csrf<button class="w-full px-4 py-2.5 rounded-xl bg-primary text-white font-semibold">Logout</button></form>
           @endguest
         @else
