@@ -141,13 +141,13 @@
 
                     <li>
                         <a href="{{ route('customer.login') }}" class="hover:text-primary duration-300">
-                            🔑 Login
+                             Login
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('customer.register') }}" class="hover:text-primary duration-300">
-                            📝 Daftar
+                             Daftar
                         </a>
                     </li>
 
