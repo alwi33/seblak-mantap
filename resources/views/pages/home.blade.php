@@ -17,7 +17,7 @@
                         @include('components.menu-card', ['paket' => $paket, 'kondimens' => $kondimens])
                     </div>
                 @empty
-                    <div class="col-span-3">Belum ada paket aktif.</div>
+                    <div class="col-span-3 card-modern p-10 text-center text-gray-500">Belum ada paket aktif.</div>
                 @endforelse
             </div>
         </div>
@@ -89,7 +89,6 @@
             </div>
         </div>
     </section>
-
 @endsection
 
 @push('scripts')

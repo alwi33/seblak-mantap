@@ -26,7 +26,16 @@
 }
 
 @layer base {
-  html, body, #app {
+  /* PERBAIKAN: sebelumnya "html, body, #app { height: 100%; }" — memaksa
+     tinggi <main id="app"> pas 1 layar penuh (100% tinggi viewport),
+     padahal isi halaman (hero + grid menu + section lain) jelas lebih
+     panjang dari itu. Akibatnya konten yang kelebihan tinggi cuma
+     "meluber" secara visual, tapi kotak <main> dianggap sudah berakhir di
+     batas 1 layar tadi, sehingga <footer> (elemen sesudahnya) mulai
+     digambar di titik itu juga dan numpuk di atas ekor konten yang meluber.
+     #app sengaja dihapus dari aturan ini — biarkan tingginya menyesuaikan
+     isi (lewat class flex-1 di elemen <main>), bukan dipatok 100%. */
+  html, body {
       height: 100%;
   }
 

@@ -9,7 +9,7 @@
 
         @if (empty($items))
             <div class="card-modern text-center py-16 px-6">
-                <div class="text-5xl mb-3">🛒</div>
+                <div class="text-5xl mb-3">Keranjang</div>
                 <p class="text-gray-600 mb-4">Keranjang kamu masih kosong. Yuk pilih seblak favoritmu dulu!</p>
                 <a href="{{ route('menu.index') }}" class="btn-primary inline-flex">Lihat Menu</a>
             </div>
