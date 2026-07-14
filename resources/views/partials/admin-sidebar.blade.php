@@ -5,22 +5,22 @@
 
 <nav class="nav flex-column">
     <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
-        📊 Dashboard
+        Dashboard
     </a>
     <a class="nav-link {{ request()->routeIs('admin.paket.*') ? 'active' : '' }}" href="{{ route('admin.paket.index') }}">
-        🍜 Kelola Paket Seblak
+         Kelola Paket Seblak
     </a>
     <a class="nav-link {{ request()->routeIs('admin.kondimen.*') ? 'active' : '' }}" href="{{ route('admin.kondimen.index') }}">
-        🧂 Kelola Kondimen
+         Kelola Kondimen
     </a>
     <a class="nav-link {{ request()->routeIs('admin.pemesanan.*') ? 'active' : '' }}" href="{{ route('admin.pemesanan.index') }}">
-        🧾 Pesanan Masuk
+         Pesanan Masuk
     </a>
     <a class="nav-link {{ request()->routeIs('admin.pengaturan.*') ? 'active' : '' }}" href="{{ route('admin.pengaturan.edit') }}">
-        ⚙️ Pengaturan Toko
+         Pengaturan Toko
     </a>
     <hr class="border-secondary">
     <a class="nav-link" href="{{ route('menu.index') }}" target="_blank">
-        🌐 Lihat Halaman Pelanggan
+         Lihat Halaman Pelanggan
     </a>
 </nav>

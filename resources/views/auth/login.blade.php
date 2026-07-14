@@ -31,7 +31,7 @@
         <div class="mb-4">
           <label class="block text-sm font-medium mb-1.5">Email</label>
           <div class="relative">
-            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">📧</span>
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></span>
             <input type="email" name="email" value="{{ old('email') }}" required autofocus
                    class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-smooth">
           </div>
@@ -41,7 +41,7 @@
         <div class="mb-4">
           <label class="block text-sm font-medium mb-1.5">Password</label>
           <div class="relative">
-            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">🔒</span>
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></span>
             <input type="password" name="password" required
                    class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-smooth">
           </div>

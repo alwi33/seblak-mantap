@@ -62,13 +62,13 @@
         @else
           <!-- Menu Admin -->
           <div class="flex items-center gap-1 mr-3">
-            <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">📊 Dashboard</a>
-            <a href="{{ route('admin.paket.index') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">🍜 Paket</a>
-            <a href="{{ route('admin.kondimen.index') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">🧂 Kondimen</a>
-            <a href="{{ route('admin.pemesanan.index') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">🧾 Pesanan</a>
-            <a href="{{ route('admin.pengaturan.edit') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">⚙️ Pengaturan</a>
+            <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Dashboard</a>
+            <a href="{{ route('admin.paket.index') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Paket</a>
+            <a href="{{ route('admin.kondimen.index') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Kondimen</a>
+            <a href="{{ route('admin.pemesanan.index') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Pesanan</a>
+            <a href="{{ route('admin.pengaturan.edit') }}" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors"> Pengaturan</a>
           </div>
-          <a href="{{ route('menu.index') }}" target="_blank" class="px-3 py-2 text-sm font-medium rounded-full border border-primary/20 hover:bg-primary/5 transition-colors">👁️ Lihat Toko</a>
+          <a href="{{ route('menu.index') }}" target="_blank" class="px-3 py-2 text-sm font-medium rounded-full border border-primary/20 hover:bg-primary/5 transition-colors"> Lihat Toko</a>
           <form method="POST" action="{{ route('admin.logout') }}" class="inline ml-2">
             @csrf
             <button class="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold hover:bg-primary/20 transition-colors">Logout</button>
