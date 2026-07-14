@@ -1,92 +1,202 @@
-@php
-    $pengaturanFooter = \App\Models\Pengaturan::aktif();
-    $inisial = \Illuminate\Support\Str::of($pengaturanFooter->nama_toko)->explode(' ')->map(fn($w) => mb_substr($w,0,1))->join('');
-    $mapsUrl = $pengaturanFooter->alamat_toko ? 'https://www.google.com/maps/search/' . urlencode($pengaturanFooter->alamat_toko) : null;
-@endphp
-<footer id="kontak-footer" class="mt-16 bg-gradient-to-b from-white/50 to-gray-50 border-t-2 border-primary/20 py-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-      <!-- Column 1: Tentang Toko -->
-      <div class="space-y-4 md:col-span-1">
-        <div class="flex items-center gap-3">
-          @if ($pengaturanFooter->logo_url)
-            <img src="{{ $pengaturanFooter->logo_url }}" alt="{{ $pengaturanFooter->nama_toko }}" class="w-12 h-12 rounded-2xl object-cover shadow-modern">
-          @else
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-modern">{{ $inisial }}</div>
-          @endif
-          <div>
-            <div class="font-bold text-lg">{{ $pengaturanFooter->nama_toko }}</div>
-            <div class="text-xs text-gray-500">Pedasnya Bikin Nagih</div>
-          </div>
+<footer id="kontak-footer" class="relative overflow-hidden mt-16 bg-slate-900 text-gray-300 border-t border-slate-700">
+
+    <!-- Background Decoration -->
+    <div class="absolute inset-0">
+        <div class="absolute -top-24 -left-24 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-secondary/20 rounded-full blur-3xl"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-800 via-slate-900 to-black"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 py-14">
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+            <!-- Tentang -->
+            <div class="space-y-5">
+
+                <div class="flex items-center gap-4">
+
+                    @if ($pengaturanFooter->logo_url)
+                        <img src="{{ $pengaturanFooter->logo_url }}"
+                             class="w-14 h-14 rounded-2xl object-cover ring-2 ring-primary/40"
+                             alt="{{ $pengaturanFooter->nama_toko }}">
+                    @else
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-lg text-white shadow-lg">
+                            {{ $inisial }}
+                        </div>
+                    @endif
+
+                    <div>
+                        <h3 class="font-bold text-white text-xl">
+                            {{ $pengaturanFooter->nama_toko }}
+                        </h3>
+
+                        <p class="text-sm text-primary font-medium">
+                            🌶 Pedasnya Bikin Nagih
+                        </p>
+                    </div>
+
+                </div>
+
+                <p class="text-sm leading-7 text-gray-400">
+                    {{ $pengaturanFooter->alamat_toko ?: 'Alamat toko akan tampil setelah diatur melalui panel admin.' }}
+                </p>
+
+            </div>
+
+            <!-- Menu -->
+            <div>
+
+                <h4 class="text-white font-semibold mb-5">
+                    Menu Cepat
+                </h4>
+
+                <ul class="space-y-3">
+
+                    <li>
+                        <a href="{{ route('menu.index') }}" class="hover:text-primary duration-300">
+                            🍜 Lihat Menu
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('keranjang.index') }}" class="hover:text-primary duration-300">
+                            🛒 Keranjang
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('status.form') }}" class="hover:text-primary duration-300">
+                            🧾 Cek Pesanan
+                        </a>
+                    </li>
+
+                    @auth
+                    <li>
+                        <a href="{{ route('dashboard') }}" class="hover:text-primary duration-300">
+                            👤 Dashboard
+                        </a>
+                    </li>
+                    @endauth
+
+                </ul>
+
+            </div>
+
+            <!-- Kontak -->
+            <div>
+
+                <h4 class="text-white font-semibold mb-5">
+                    Hubungi Kami
+                </h4>
+
+                <ul class="space-y-3">
+
+                    @if($pengaturanFooter->no_wa)
+
+                    <li>
+                        <a href="https://wa.me/{{ preg_replace('/\D/', '', $pengaturanFooter->no_wa) }}"
+                           target="_blank"
+                           class="flex items-center gap-2 hover:text-primary duration-300">
+                            📱 {{ $pengaturanFooter->no_wa }}
+                        </a>
+                    </li>
+
+                    @endif
+
+                    <li class="flex items-start gap-2">
+                        📍
+                        <span>
+                            {{ $pengaturanFooter->alamat_toko ?: 'Lokasi toko' }}
+                        </span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Info -->
+            <div>
+
+                <h4 class="text-white font-semibold mb-5">
+                    Informasi
+                </h4>
+
+                <ul class="space-y-3">
+
+                    <li>
+                        <a href="#about" class="hover:text-primary duration-300">
+                            ℹ Tentang Kami
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#menu-list" class="hover:text-primary duration-300">
+                            🎉 Promo Hari Ini
+                        </a>
+                    </li>
+
+                    @guest
+
+                    <li>
+                        <a href="{{ route('customer.login') }}" class="hover:text-primary duration-300">
+                            🔑 Login
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('customer.register') }}" class="hover:text-primary duration-300">
+                            📝 Daftar
+                        </a>
+                    </li>
+
+                    @endguest
+
+                </ul>
+
+            </div>
+
         </div>
-        <p class="text-sm text-gray-600 leading-relaxed">
-            {{ $pengaturanFooter->deskripsi_toko ?: ($pengaturanFooter->alamat_toko ?: 'Info toko akan tampil di sini setelah diisi lewat panel admin.') }}
-        </p>
-      </div>
 
-      <!-- Column 2: Menu Cepat -->
-      <div class="space-y-3">
-        <h4 class="font-semibold text-gray-900 mb-3">Menu Cepat</h4>
-        <ul class="space-y-2.5">
-          <li><a href="{{ route('menu.index') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Lihat Menu</a></li>
-          <li><a href="{{ route('keranjang.index') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2">🛒 Keranjang</a></li>
-          <li><a href="{{ route('status.form') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Cek Status Pesanan</a></li>
-          @auth
-            <li><a href="{{ route('dashboard') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Akun Saya</a></li>
-          @endauth
-        </ul>
-      </div>
+        <!-- Divider -->
+        <div class="border-t border-slate-700 my-10"></div>
 
-      <!-- Column 3: Info Kontak -->
-      <div class="space-y-3">
-        <h4 class="font-semibold text-gray-900 mb-3">Hubungi Kami</h4>
-        <ul class="space-y-2.5">
-          @if ($pengaturanFooter->no_wa)
-            <li>
-              <a href="https://wa.me/{{ preg_replace('/\D/', '', $pengaturanFooter->no_wa) }}" target="_blank" rel="noopener" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all flex items-center gap-2">
-                 {{ $pengaturanFooter->no_wa }}
-              </a>
-            </li>
-          @else
-            <li><span class="text-sm text-gray-400">Nomor WhatsApp belum diatur</span></li>
-          @endif
-          @if ($mapsUrl)
-            <li>
-              <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all flex items-start gap-2">
-                <span></span><span>{{ $pengaturanFooter->alamat_toko }}</span>
-              </a>
-            </li>
-          @else
-            <li><span class="text-sm text-gray-400">Alamat toko belum diatur</span></li>
-          @endif
-        </ul>
-      </div>
+        <!-- Bottom -->
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-5">
 
-      <!-- Column 4: Info Penting -->
-      <div class="space-y-3">
-        <h4 class="font-semibold text-gray-900 mb-3">Info Penting</h4>
-        <ul class="space-y-2.5">
-          <li><a href="#about" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Tentang Kami</a></li>
-          <li><a href="#menu-list" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Promo Spesial</a></li>
-          @guest
-            <li><a href="{{ route('customer.login') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Login</a></li>
-            <li><a href="{{ route('customer.register') }}" class="text-sm text-gray-600 hover:text-primary hover:translate-x-0.5 transition-all inline-flex items-center gap-2"> Daftar Akun</a></li>
-          @endguest
-        </ul>
-      </div>
+            <p class="text-sm text-gray-400">
+                © {{ date('Y') }}
+                <span class="font-semibold text-white">
+                    {{ $pengaturanFooter->nama_toko }}
+                </span>
+                • Semua Hak Cipta Dilindungi.
+            </p>
+
+            <div class="flex flex-wrap gap-6 text-sm">
+
+                <a href="{{ route('menu.index') }}" class="hover:text-primary duration-300">
+                    Beranda
+                </a>
+
+                <a href="{{ route('status.form') }}" class="hover:text-primary duration-300">
+                    Cek Pesanan
+                </a>
+
+                @if($pengaturanFooter->no_wa)
+
+                <a href="https://wa.me/{{ preg_replace('/\D/', '', $pengaturanFooter->no_wa) }}"
+                   target="_blank"
+                   class="hover:text-primary duration-300">
+                    WhatsApp
+                </a>
+
+                @endif
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="border-t border-gray-200 pt-6"></div>
-
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
-      <p>&copy; {{ date('Y') }} <strong>{{ $pengaturanFooter->nama_toko }}</strong>. Semua hak cipta dilindungi.</p>
-      <div class="flex gap-4">
-        <a href="{{ route('menu.index') }}" class="hover:text-primary transition-colors">Halaman Utama</a>
-        <a href="{{ route('status.form') }}" class="hover:text-primary transition-colors">Cek Pesanan</a>
-        @if ($pengaturanFooter->no_wa)
-          <a href="https://wa.me/{{ preg_replace('/\D/', '', $pengaturanFooter->no_wa) }}" target="_blank" rel="noopener" class="hover:text-primary transition-colors">Hubungi WA</a>
-        @endif
-      </div>
-    </div>
-  </div>
 </footer>
